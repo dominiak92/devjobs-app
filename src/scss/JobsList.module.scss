@@ -1,0 +1,153 @@
+@import "./mixins.scss";
+@import "./breakpoints.scss";
+@import "./variables.scss";
+
+$light-background: $white;
+$dark-background: $verydarkblue;
+$light-color: $verydarkblue;
+$dark-color: $white;
+
+@mixin style($background) {
+  background-color: $background;
+}
+
+@mixin textstyle($color) {
+  color: $color;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .button {
+    width: 141px;
+    height: 48px;
+    font-family: "Kumbh Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #939bf4;
+    border: none;
+    border-radius: 6px;
+    color: $white;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    &:hover {
+      background-color: #5964e0;
+    }}
+  .jobs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 111px;
+    min-height: 70vh;
+    @include md {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 300px);
+      justify-content: space-evenly;
+      grid-gap: 10px;
+      align-items: flex-start;
+      margin: 85px auto;
+      margin-bottom: 0;
+      width: 100%;
+    }
+    .ico {
+      font-size: 140px;
+      &.light {
+        @include textstyle($light-color);
+      }
+      &.dark {
+        @include textstyle($dark-color);
+      }
+    }
+    .error {
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 25px;
+      text-align: center;
+      margin: 0;
+      transition: all 0.3s ease;
+      &.light {
+        @include textstyle($light-color);
+      }
+      &.dark {
+        @include textstyle($dark-color);
+      }
+    }
+    .card {
+      width: 327px;
+      height: 228px;
+      padding: 32px;
+      box-sizing: border-box;
+      border-radius: 6px;
+      margin-bottom: 50px;
+      position: relative;
+      transition: all 0.3s ease;
+      &.light {
+        @include style($light-background);
+      }
+      &.dark {
+        @include style($dark-background);
+      }
+    }
+    .logo {
+      position: absolute;
+      top: -11%;
+      left: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+    }
+    .information {
+      .upperInfo {
+        display: flex;
+        align-items: center;
+        color: $darkgray;
+        line-height: 20px;
+        font-size: 16px;
+        .postedAt {
+          margin-right: 12px;
+        }
+        .dot {
+          background-color: $darkgray;
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          margin-right: 12px;
+        }
+      }
+      .position {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 25px;
+        margin: 0;
+        transition: all 0.3s ease;
+        &.light {
+          @include textstyle($light-color);
+        }
+        &.dark {
+          @include textstyle($dark-color);
+        }
+      }
+      .company {
+        color: $darkgray;
+        line-height: 20px;
+        font-size: 16px;
+        margin-top: 17px;
+        margin-bottom: 0;
+      }
+      .location {
+        color: #5964e0;
+        font-weight: 700;
+        font-size: 14px;
+        margin-top: 34px;
+      }
+    }
+  }
+}

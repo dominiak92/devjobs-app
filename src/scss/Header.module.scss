@@ -1,0 +1,39 @@
+@import "./mixins.scss";
+@import "./breakpoints.scss";
+@import "./variables.scss";
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('../assets/mobile/bg-pattern-header.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 136px;
+    position: relative;
+    @include md {
+        background-image: url('../assets/tablet/bg-pattern-header.svg');
+        height: 21vw;
+        background-size: cover;
+    }
+    .logoToggle {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px;
+        box-sizing: border-box;
+        @include md {
+            padding: 30px;
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: $white;
+            text-shadow: 0px 4px 4px #00000040;
+            margin: 0;
+
+        }
+    }
+}

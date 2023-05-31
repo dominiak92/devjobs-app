@@ -1,0 +1,32 @@
+@import "./breakpoints.scss";
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.error {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+.message {
+    font-family: $font;
+    text-align: center;
+}
+
+}.button {
+    width: 141px;
+    height: 48px;
+    font-family: "Kumbh Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    background-color: #939bf4;
+    border: none;
+    border-radius: 6px;
+    color: $white;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    &:hover {
+      background-color: #5964e0;
+    }}

@@ -1,0 +1,45 @@
+@import "variables.scss";
+@import "breakpoints.scss";
+
+// Small devices
+
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices - tablets
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+@mixin mobileFilter {
+  width: 85%;
+  height: 80px;
+  background-color: $white;
+  border-radius: 6px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 96px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

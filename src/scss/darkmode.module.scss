@@ -1,0 +1,9 @@
+@import "./breakpoints.scss";
+@import "./mixins.scss";
+@import "./variables.scss";
+
+[data-theme="dark"] {
+    --font-color: $white;
+    --background-color: #333;
+    --link-color: lightblue;
+  }

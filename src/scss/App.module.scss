@@ -1,0 +1,20 @@
+@import "./breakpoints.scss";
+@import "./mixins.scss";
+@import "./variables.scss";
+
+$light-background: $lightgrey;
+$dark-background: $midnight;
+
+@mixin style($background) {
+  background-color: $background;
+}
+
+.App {
+  transition: all 0.3s ease;
+  &.light {
+    @include style($light-background);
+  }
+  &.dark {
+    @include style($dark-background);
+  }
+}

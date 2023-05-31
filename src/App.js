@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import styles from "./scss/App.module.scss"
+import Header from "./components/Header";
+import JobsList from "./components/JobsList";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Job from "./components/Job";
+import { useSelector } from "react-redux";
+import classNames from "classnames";
+
+
 
 function App() {
+  const currentStyle = useSelector((state) => state.theme.currentStyle);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classNames(styles.App, styles[currentStyle])}>
+      <Header />
+      <Routes>
+      <Route exact path="/" element={<JobsList />} />
+      <Route path="/job/:id" element={<Job/>} />
+      </Routes>
     </div>
   );
 }
