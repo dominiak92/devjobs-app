@@ -49,7 +49,8 @@ const MobileFilter = () => {
     }
   }, [open, defaultLocation]);
 
-  const handleFilter = (event) => {
+  const handleFilter = (e) => {
+    e.preventDefault()
     const filteredJobs = data.filter(
       (element) =>
         element.company
@@ -241,7 +242,7 @@ const MobileFilter = () => {
           }}
           variant="contained"
           type="submit"
-          onClick={(event) => handleFilter(event)}
+          onClick={handleFilter}
         >
           <SearchIcon />
         </Button>
