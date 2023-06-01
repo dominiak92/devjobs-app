@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/devjobs-app/static/css/main.4101c033.css",
+    "main.js": "/devjobs-app/static/js/main.5144b5cb.js",
+    "static/js/787.fe130bdd.chunk.js": "/devjobs-app/static/js/787.fe130bdd.chunk.js",
+    "static/media/logo.svg": "/devjobs-app/static/media/logo.8c0b644930f3fa038b45.svg",
+    "static/media/scoot.svg": "/devjobs-app/static/media/scoot.345a4bfd15e6f589d568.svg",
+    "static/media/pomodoro.svg": "/devjobs-app/static/media/pomodoro.a786dc9a9ad4e2ead3b2.svg",
+    "static/media/vector.svg": "/devjobs-app/static/media/vector.d9c0112ac6f7293a78de.svg",
+    "static/media/crowdfund.svg": "/devjobs-app/static/media/crowdfund.1aee1724815801f6f419.svg",
+    "static/media/icon-sun.svg": "/devjobs-app/static/media/icon-sun.9422c1533b01125b8456.svg",
+    "static/media/pod.svg": "/devjobs-app/static/media/pod.3c73e3778043bb439ba8.svg",
+    "static/media/bg-pattern-header.svg": "/devjobs-app/static/media/bg-pattern-header.ea1134f14277d29c5f40.svg",
+    "index.html": "/devjobs-app/index.html",
+    "static/media/coffeeroasters.svg": "/devjobs-app/static/media/coffeeroasters.70ce77dac433114a8f88.svg",
+    "static/media/typemaster.svg": "/devjobs-app/static/media/typemaster.a31ba9597141de8f1fa9.svg",
+    "static/media/creative.svg": "/devjobs-app/static/media/creative.af94119f448ec5663445.svg",
+    "static/media/mastercraft.svg": "/devjobs-app/static/media/mastercraft.a98383d02483419b7348.svg",
+    "static/media/bg-pattern-detail-footer.svg": "/devjobs-app/static/media/bg-pattern-detail-footer.0e261449c516a53cfd64.svg",
+    "static/media/blogr.svg": "/devjobs-app/static/media/blogr.68f4bc4bb85b4aa267d0.svg",
+    "static/media/icon-moon.svg": "/devjobs-app/static/media/icon-moon.038e80ca9ba2097f6257.svg",
+    "static/media/maker.svg": "/devjobs-app/static/media/maker.b6f34b7909e60ded181a.svg",
+    "static/media/officelite.svg": "/devjobs-app/static/media/officelite.34773de614b80abc0b9a.svg",
+    "static/media/icon-filter.svg": "/devjobs-app/static/media/icon-filter.2471816db9fac72cf5a8.svg",
+    "static/media/icon-location.svg": "/devjobs-app/static/media/icon-location.325ff3d99912e5505f5c.svg",
+    "static/media/icon-search.svg": "/devjobs-app/static/media/icon-search.09900c2e3c8743161876.svg",
+    "static/media/icon-check.svg": "/devjobs-app/static/media/icon-check.7b769ecf9d90157efbc3.svg",
+    "main.4101c033.css.map": "/devjobs-app/static/css/main.4101c033.css.map",
+    "main.5144b5cb.js.map": "/devjobs-app/static/js/main.5144b5cb.js.map",
+    "787.fe130bdd.chunk.js.map": "/devjobs-app/static/js/787.fe130bdd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4101c033.css",
+    "static/js/main.5144b5cb.js"
+  ]
+}
