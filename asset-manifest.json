@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/devjobs-app/static/css/main.4101c033.css",
-    "main.js": "/devjobs-app/static/js/main.7cf6a29e.js",
+    "main.js": "/devjobs-app/static/js/main.e432dd10.js",
     "static/js/787.fe130bdd.chunk.js": "/devjobs-app/static/js/787.fe130bdd.chunk.js",
     "static/media/logo.svg": "/devjobs-app/static/media/logo.8c0b644930f3fa038b45.svg",
     "static/media/scoot.svg": "/devjobs-app/static/media/scoot.345a4bfd15e6f589d568.svg",
@@ -26,11 +26,11 @@
     "static/media/icon-search.svg": "/devjobs-app/static/media/icon-search.09900c2e3c8743161876.svg",
     "static/media/icon-check.svg": "/devjobs-app/static/media/icon-check.7b769ecf9d90157efbc3.svg",
     "main.4101c033.css.map": "/devjobs-app/static/css/main.4101c033.css.map",
-    "main.7cf6a29e.js.map": "/devjobs-app/static/js/main.7cf6a29e.js.map",
+    "main.e432dd10.js.map": "/devjobs-app/static/js/main.e432dd10.js.map",
     "787.fe130bdd.chunk.js.map": "/devjobs-app/static/js/787.fe130bdd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4101c033.css",
-    "static/js/main.7cf6a29e.js"
+    "static/js/main.e432dd10.js"
   ]
 }
