@@ -16,10 +16,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { setFilteredJobs } from "../../store/jobsSlice";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
+import { useMediaQuery } from "react-responsive";
 
 const Filter = () => {
   const [location, setLocation] = useState("");
-  const [defaultLocation, setDefaultLocation] = useState("Singapore");
+  const [defaultLocation, setDefaultLocation] = useState("");
   const [filterValue, setFilterValue] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [inputData, setInputData] = useState([]);
@@ -27,6 +28,7 @@ const Filter = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.jobs.data);
   const currentStyle = useSelector((state) => state.theme.currentStyle);
+  const isDesktop = useMediaQuery({ maxWidth: 1200 });
 
   const locationData = [
     "Singapore",
@@ -38,44 +40,53 @@ const Filter = () => {
     "United Kingdom",
   ];
 
-  const filterHandler = (event) => {
-    const filteredJobs = data.filter(
-      (element) =>
-        element.company
-          .toLowerCase()
-          .includes(filterValue.toLowerCase().trim()) ||
-        element.position
-          .toLowerCase()
-          .includes(filterValue.toLowerCase().trim())
-    );
-
-    const locationContractData = filteredJobs.filter((element) => {
-      if (checked) {
-        return (
-          element.location.includes(location) &&
-          element.contract.includes("Full Time")
-        );
+  const filterHandler = () => {
+    const filteredJobs = data.filter((element) => {
+      const isCompanyMatch = element.company
+        .toLowerCase()
+        .includes(filterValue.toLowerCase().trim());
+      const isPositionMatch = element.position
+        .toLowerCase()
+        .includes(filterValue.toLowerCase().trim());
+      if (checked || filterValue || location) {
+        if (checked) {
+          return (
+            (isCompanyMatch || isPositionMatch) &&
+            element.location.includes(location) &&
+            element.contract.includes("Full Time")
+          );
+        } else {
+          return (
+            (isCompanyMatch || isPositionMatch) &&
+            element.location.includes(location)
+          );
+        }
       } else {
-        return element.location.includes(location);
+        return isCompanyMatch || isPositionMatch;
       }
     });
-    dispatch(setFilteredJobs(locationContractData));
+
+    dispatch(setFilteredJobs(filteredJobs));
     setFilteredData(filteredJobs);
     setFilterValue("");
   };
 
   const locationTimeFilterHandler = () => {
-    const filteredJobs = data.filter((element) => {
-      if (checked) {
-        return (
-          element.location.includes(location) &&
-          element.contract.includes("Full Time")
-        );
-      } else {
-        return element.location.includes(location);
-      }
-    });
-    dispatch(setFilteredJobs(filteredJobs));
+    if (checked || location) {
+      const filteredJobs = data.filter((element) => {
+        if (checked) {
+          return (
+            element.location.includes(location) &&
+            element.contract.includes("Full Time")
+          );
+        } else {
+          return element.location.includes(location);
+        }
+      });
+      dispatch(setFilteredJobs(filteredJobs));
+    } else {
+      dispatch(setFilteredJobs(data));
+    }
   };
 
   const dataSetter = (event) => {
@@ -100,6 +111,8 @@ const Filter = () => {
     setLocation(defaultLocation);
   }, [defaultLocation]);
 
+const inputWidth = isDesktop ? 190 : 260;
+
   return (
     <div className={classNames(styles.filter, styles[currentStyle])}>
       <Box
@@ -115,7 +128,7 @@ const Filter = () => {
         />
         <TextField
           id="demo-helper-text-misaligned-no-helper"
-          label="Position or company.."
+          label={ isDesktop ? 'Position or company..' : 'Filter by position or company..' }
           InputLabelProps={{
             style: {
               fontFamily: "Kumbh Sans",
@@ -123,14 +136,13 @@ const Filter = () => {
             },
           }}
           onKeyDown={(ev) => {
-    console.log(`Pressed keyCode ${ev.key}`);
-    if (ev.key === 'Enter') {
-      filterHandler()
-      ev.preventDefault();
-    }
-  }}
+            if (ev.key === "Enter") {
+              filterHandler();
+              ev.preventDefault();
+            }
+          }}
           sx={{
-            width: { sm: 190 },
+            width: { sm: inputWidth }, 
             "& fieldset": { border: "none" },
           }}
           value={filterValue}
@@ -154,26 +166,37 @@ const Filter = () => {
             color: currentStyle === "dark" ? "white" : "action.active",
           }}
         />
-        <Select
-          sx={{
-            fontSize: "16px",
-            fontFamily: "'Kumbh Sans', sans-serif;",
-            padding: 0,
-            color: currentStyle === "dark" ? "white" : "black",
-            "& fieldset": { border: "none" },
-          }}
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Location"
-          defaultValue={"Singapore"}
-          onChange={(e) => setLocation(e.target.value)}
-        >
-          {locationData.map((element, index) => (
-            <MenuItem key={index} value={element}>
-              {element}
-            </MenuItem>
-          ))}
-        </Select>
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+            <InputLabel
+              sx={{ color: currentStyle === "dark" ? "white" : "black" }}
+              id="demo-simple-select-label"
+            >
+              Location
+            </InputLabel>
+            <Select
+              sx={{
+                fontSize: "16px",
+                maxWidth: '180px',
+                width: '180px',
+                fontFamily: "'Kumbh Sans', sans-serif;",
+                color: currentStyle === "dark" ? "white" : "black",
+                "& fieldset": { border: "none" },
+              }}
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              label="Location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            >
+              {locationData.map((element, index) => (
+                <MenuItem key={index} value={element}>
+                  {element}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Box>
       </Box>
       <Divider orientation="vertical" variant="middle" flexItem />
       <FormControlLabel
@@ -191,7 +214,7 @@ const Filter = () => {
           color: currentStyle === "dark" ? "white" : "black",
         }}
         label={
-          <Typography className={styles.formControlLabel}>Full Time</Typography>
+          <Typography className={styles.formControlLabel}>{isDesktop ? 'Full Time' : 'Full Time Only'}</Typography>
         }
       />
       <Button

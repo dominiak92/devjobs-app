@@ -19,6 +19,16 @@ $dark-color: $white;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  padding-top: 0;
+  @include xl {
+    padding: 68px;
+    padding-top: 0;
+  }
+  .loading {
+    margin: 50px;
+    margin-bottom: 0;
+  }
   .button {
     width: 141px;
     height: 48px;
@@ -46,9 +56,9 @@ $dark-color: $white;
     min-height: 70vh;
     @include md {
       display: grid;
-      grid-template-columns: repeat(auto-fill, 300px);
+      grid-template-columns: repeat(auto-fill, 330px);
       justify-content: space-evenly;
-      grid-gap: 10px;
+      grid-gap: 20px;
       align-items: flex-start;
       margin: 85px auto;
       margin-bottom: 0;

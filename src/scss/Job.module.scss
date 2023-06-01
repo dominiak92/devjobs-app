@@ -7,10 +7,9 @@ $dark-background: $verydarkblue;
 $light-color: $verydarkblue;
 $dark-color: $white;
 
-
 @mixin style($background) {
   background-color: $background;
-};
+}
 
 @mixin textstyle($color) {
   color: $color;
@@ -30,6 +29,39 @@ $dark-color: $white;
     margin-top: 96px;
     border-radius: 6px;
     transition: all 0.3s ease;
+    @include md {
+      justify-content: space-around;
+      align-items: center;
+
+      box-sizing: border-box;
+      padding: 10px;
+    }
+    .footerJobInfo {
+      display: none;
+      @include md {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .footerPosition {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+        &.light {
+          @include textstyle($light-color);
+        }
+        &.dark {
+          @include textstyle($dark-color);
+        }
+      }
+      .footerCompany {
+        color: #6E8098;
+        font-size: 16px;
+        margin: 0;
+        margin-top: 12px;
+
+      }
+    }
     &.light {
       @include style($light-background);
     }
@@ -42,17 +74,22 @@ $dark-color: $white;
       justify-content: center;
       width: 327px;
       height: 96px;
+      @include md{
+        justify-content: flex-end;
+      }
     }
   }
-  .progress {
-    padding: 20px;
+  .progressWrapper {
+    .progress {
+      padding: 20px;
+    }
   }
   .header {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: -14px;
-    width: 327px;
+    width: 88vw;
     height: 205px;
     border-radius: 6px;
     z-index: 1;
@@ -63,12 +100,25 @@ $dark-color: $white;
     &.dark {
       @include style($dark-background);
     }
+    @include md {
+      width: 90vw;
+      height: 140px;
+      flex-direction: row;
+    }
     .logoname {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       margin-bottom: 25px;
+      @include md {
+        flex-direction: row;
+        height: 100%;
+        margin: 0;
+        width: 100%;
+        justify-content: space-between;
+        padding-right: 40px;
+      }
     }
     .logo {
       display: flex;
@@ -79,6 +129,15 @@ $dark-color: $white;
       border-radius: 15px;
       margin-top: -25px;
       margin-bottom: 24px;
+      @include md {
+        height: 100%;
+        width: 140px;
+        margin: 0;
+        border-radius: 6px 0px 0px 6px;
+      }
+      .logoimg {
+        width: 60%;
+      }
     }
     .companyName {
       display: flex;
@@ -86,6 +145,12 @@ $dark-color: $white;
       align-items: center;
       height: 52px;
       margin-bottom: 25px;
+      @include md {
+        align-items: flex-start;
+        margin-bottom: 0;
+        margin-left: 40px;
+        margin-right: auto;
+      }
       .company {
         font-size: 20px;
         font-weight: 700;
@@ -98,7 +163,9 @@ $dark-color: $white;
         &.dark {
           @include textstyle($dark-color);
         }
-        
+        @include md {
+          font-size: 24px;
+        }
       }
       .website {
         font-size: 16px;
@@ -109,7 +176,7 @@ $dark-color: $white;
   }
   .main {
     border-radius: 6px;
-    width: 327px;
+    width: 88vw;
     margin-top: 24px;
     padding: 24px;
     padding-top: 20px;
@@ -120,6 +187,10 @@ $dark-color: $white;
     }
     &.dark {
       @include style($dark-background);
+    }
+    @include md {
+      width: 90vw;
+      padding: 48px;
     }
     .description {
       font-size: 16px;
@@ -143,7 +214,7 @@ $dark-color: $white;
     .orderedlist {
       padding-left: 0;
       margin: 15px;
-      list-style-type: decimal; /* Typ uporządkowanej listy - liczby dziesiętne */
+      list-style-type: decimal;
       ::marker {
         font-weight: bold;
         color: #5964e0;
@@ -171,49 +242,62 @@ $dark-color: $white;
         padding-bottom: 8 px;
       }
     }
-    .information {
-      margin-bottom: 50px;
-      .upperInfo {
+    .infoButton {
+      @include md {
         display: flex;
         align-items: center;
-        color: $darkgray;
-        line-height: 20px;
-        font-size: 16px;
-        margin-bottom: 8px;
-        .postedAt {
-          margin: 0;
-          margin-right: 12px;
-        }
-        .dot {
-          margin: 0;
-          background-color: $darkgray;
-          width: 4px;
-          height: 4px;
-          border-radius: 50%;
-          margin-right: 12px;
-        }
-        .contract {
-          margin: 0;
-        }
+        justify-content: space-between;
       }
-      .where {
-        margin: 0;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 25px;
-        margin: 0;
-        transition: all 0.3s ease;
-        &.light {
-          @include textstyle($light-color);
+      .information {
+        margin-bottom: 50px;
+        @include md {
+          margin: 0;
         }
-        &.dark {
-          @include textstyle($dark-color);
+        .upperInfo {
+          display: flex;
+          align-items: center;
+          color: $darkgray;
+          line-height: 20px;
+          font-size: 16px;
+          margin-bottom: 8px;
+          .postedAt {
+            margin: 0;
+            margin-right: 12px;
+          }
+          .dot {
+            margin: 0;
+            background-color: $darkgray;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            margin-right: 12px;
+          }
+          .contract {
+            margin: 0;
+          }
         }
-      }
-      .location {
-        color: #5964e0;
-        font-weight: 700;
-        font-size: 14px;
+        .where {
+          margin: 0;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 25px;
+          margin: 0;
+          transition: all 0.3s ease;
+          @include md {
+            font-size: 28px;
+          }
+          &.light {
+            @include textstyle($light-color);
+          }
+          &.dark {
+            @include textstyle($dark-color);
+          }
+        }
+        .location {
+          color: #5964e0;
+          font-weight: 700;
+          font-size: 14px;
+        }
       }
     }
   }

@@ -46,7 +46,7 @@ const theme2 = createTheme({
 const Button = (props) => {
   return (
     <ThemeProvider theme={props.name === "Apply now" ? theme2 : theme1}>
-      <Fab className={styles.button} variant="extended">
+      <Fab className={styles.button} variant="extended" sx={{width: props.width}}>
         <p className={styles.button}>{props.name}</p>
       </Fab>
     </ThemeProvider>

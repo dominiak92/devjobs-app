@@ -7,14 +7,19 @@
     flex-direction: column;
     align-items: center;
     background-image: url('../assets/mobile/bg-pattern-header.svg');
-    background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% auto;
     height: 136px;
     position: relative;
     @include md {
-        background-image: url('../assets/tablet/bg-pattern-header.svg');
+        background-image: url('../assets/tablet/bg-pattern-header.svg'); 
+        width: 100%; 
         height: 21vw;
+        background-size: 100% auto;
+    }
+    @include xl {
+        background-image: url('../assets/desktop/bg-pattern-header.svg');
+        height: 11vw;
         background-size: cover;
     }
     .logoToggle {

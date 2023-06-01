@@ -5,12 +5,10 @@ import { getJobs } from "../store/jobsSlice";
 import { Link } from "react-router-dom";
 import MobileFilter from "./UI/MobileFilter";
 import classNames from "classnames";
-import CircularProgress from "@mui/material/CircularProgress";
-import { NavLink, useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import Filter from "./UI/Filter";
-import Dialog from '@mui/material/Dialog';
 import DialogError from "./UI/DialogError";
+import Skeleton from '@mui/material/Skeleton';
 
 const JobsList = () => {
   const dispatch = useDispatch();
@@ -27,22 +25,16 @@ const JobsList = () => {
   useEffect(() => {
     dispatch(getJobs());
   }, [dispatch]);
-  const location = useLocation();
 
-  const handleReturnClick = (event) => {
-    if (location.pathname === "/") {
-      window.location.reload();
-    }
-  };
 
   const isTablet = useMediaQuery({ maxWidth: 768 });
 
   return (
-    <div className={styles.wrapper}>        
-    {isTablet ? <MobileFilter /> : <Filter/>}
+    <div className={styles.wrapper}>
+      {isTablet ? <MobileFilter /> : <Filter />}
       <div className={styles.jobs}>
-
         {filter?.slice(0, next)?.map((element, index) => (
+          !loading ? (
           <Link
             to={{ pathname: `/job/${element.id}`, state: { job: element } }}
             index={index}
@@ -67,19 +59,16 @@ const JobsList = () => {
               <p className={styles.company}>{element.company}</p>
               <p className={styles.location}>{element.location}</p>
             </div>
-          </Link>
+          </Link> ) : <Skeleton key={index} style={{ marginBottom: 6 }} animation="wave" variant="rounded" width={327} height={228}/>
         ))}
-        {loading && <CircularProgress />}
-        {filter?.length === 0 && !loading && (
 
-          <DialogError/>
-        )}
-
-      </div>        {next < filter?.length && (
-          <button className={styles.button} onClick={handleMoreJob}>
-            Load More
-          </button>
-        )}
+        {filter?.length === 0 && !loading && <DialogError />}
+      </div>
+      {next < filter?.length && (
+        <button className={styles.button} onClick={handleMoreJob}>
+          Load More
+        </button>
+      )}
     </div>
   );
 };
